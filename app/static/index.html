@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Demo</title>
+<link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">Agent Demo</div>
+    <button class="new-btn" id="newSession">+ 新建会话</button>
+    <button class="about-btn" id="aboutBtn">项目说明</button>
+    <div class="sessions" id="sessions"></div>
+  </aside>
+
+  <main>
+    <header>
+      <h1 id="sessionTitle">未选择会话</h1>
+      <span class="hint">每个会话独立保存历史与待办</span>
+    </header>
+    <div class="messages" id="messages">
+      <div class="empty"><strong>开始对话</strong>新建一个会话，然后输入问题</div>
+    </div>
+    <div class="composer">
+      <div class="inner">
+        <textarea id="input" rows="1" placeholder="输入消息，Enter 发送，Shift+Enter 换行"></textarea>
+        <button class="send" id="send">发送</button>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<div class="modal-mask" id="aboutModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <div class="modal-head">
+      <h2 id="aboutTitle">项目说明</h2>
+      <button class="modal-close" id="aboutClose" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body">
+      <p>这是一个从零实现的最小可用 Agent 演示，用于展示 ReAct 循环、工具注册、多会话隔离、上下文管理与执行 trace。不依赖任何 Agent 框架。</p>
+
+      <h3>真实功能</h3>
+      <ul>
+        <li><strong>calculator</strong>：对数学表达式求值，支持 + - * / % ** 和括号</li>
+        <li><strong>todo</strong>：当前会话的待办增删改查，数据写入本地 SQLite</li>
+        <li><strong>read_docs</strong>：读取 <code>data/docs/</code> 下已登记的文档</li>
+      </ul>
+
+      <h3>mock 数据</h3>
+      <ul>
+        <li><strong>weather</strong>：返回预先写死的示例天气，<strong>不是实时数据</strong>，只覆盖北京、上海、深圳、杭州四个城市</li>
+        <li><strong>search</strong>：检索 <code>data/corpus.json</code> 中的本地语料，<strong>不连接任何搜索引擎</strong>，语料共 5 条</li>
+      </ul>
+
+      <h3>界面数据</h3>
+      <ul>
+        <li>会话列表中的示例会话、消息和待办均为本地使用产生的记录，保存在 <code>data/agent.db</code></li>
+      </ul>
+
+      <h3>其他说明</h3>
+      <ul>
+        <li>对话模型通过 OpenAI 兼容接口调用，具体模型由 <code>.env</code> 中的 <code>OPENAI_MODEL</code> 决定</li>
+        <li>「执行过程」展示的是当前这一轮的工具调用步骤；刷新页面后，历史消息不保留步骤详情</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="/ui/api.js"></script>
+<script src="/ui/render.js"></script>
+<script src="/ui/sessions.js"></script>
+<script src="/ui/chat.js"></script>
+<script src="/ui/about.js"></script>
+<script src="/ui/main.js"></script>
+</body>
+</html>

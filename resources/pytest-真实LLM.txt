@@ -1,0 +1,4 @@
+$ uv run pytest -q tests/live --run-live
+
+......                                                                   [100%]
+6 passed in 16.70s

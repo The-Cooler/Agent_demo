@@ -1,0 +1,7 @@
+[
+  {"id": "doc-001", "title": "Python 快速排序", "content": "快速排序使用分治思想，选择一个基准元素，将数组分成小于和大于基准的两部分，再递归排序。平均时间复杂度 O(n log n)，最坏 O(n^2)。"},
+  {"id": "doc-002", "title": "HTTP 状态码", "content": "200 成功，204 无内容，301 永久重定向，400 请求错误，401 未认证，403 禁止访问，404 未找到，409 冲突，422 参数校验失败，500 服务器内部错误，502 网关错误。"},
+  {"id": "doc-003", "title": "ReAct 模式", "content": "ReAct 将推理（Reasoning）与行动（Acting）交替进行：模型先思考，再调用工具，得到观察结果后继续思考，直到得出最终答案。"},
+  {"id": "doc-004", "title": "SQLite WAL", "content": "WAL（Write-Ahead Logging）模式下，读写可以并发进行，写操作先写入日志文件。适合读多写少的本地应用。"},
+  {"id": "doc-005", "title": "Agent Demo 项目说明", "content": "这是一个从零实现的最小可用 Agent 演示项目，用 FastAPI 提供 HTTP 接口，Agent 负责理解用户需求、调用工具并返回结果。"}
+]
